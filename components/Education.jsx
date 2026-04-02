@@ -6,17 +6,17 @@ export function Education() {
   const education = [
     {
       degree: "B.Tech in Computer Science and Engineering",
-      institution: "Tech University",
-      date: "2023 - 2027 (Expected)",
-      grade: "CGPA: 8.9/10",
-      description: "Core coursework includes Data Structures, Algorithms, Operating Systems, Database Management Systems, and Web Technologies."
+      institution: "JECRC University",
+      date: "3rd Year",
+      grade: "Pursuing",
+      description: "Focusing on core computer science subjects, software development, and gaining practical experience through building modern web applications."
     },
     {
-      degree: "Higher Secondary (10+2)",
-      institution: "City Public School",
-      date: "2021 - 2023",
-      grade: "Percentage: 92%",
-      description: "Specialized in Physics, Chemistry, and Mathematics (PCM)."
+      degree: "Secondary Education (CBSE 12th)",
+      institution: "Vidyasthali Public School",
+      date: "Completed",
+      grade: "72%",
+      description: "Completed my higher secondary education, establishing a robust academic foundation and developing strong analytical and problem-solving abilities."
     }
   ];
 
