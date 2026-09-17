@@ -1,22 +1,29 @@
 "use client";
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar } from "lucide-react";
+import { GraduationCap, Calendar, Award } from "lucide-react";
 
 export function Education() {
   const education = [
     {
-      degree: "B.Tech in Computer Science and Engineering",
+      degree: "Bachelor of Technology – Computer Science & Engineering",
       institution: "JECRC University",
-      date: "3rd Year",
-      grade: "Pursuing",
-      description: "Focusing on core computer science subjects, software development, and gaining practical experience through building modern web applications."
+      date: "Current Student",
+      description: "Pursuing a comprehensive curriculum in Computer Science, focusing on Software Engineering, Data Structures, Algorithms, Database Management, and Artificial Intelligence.",
+      icon: <GraduationCap size={28} />
     },
     {
-      degree: "Secondary Education (CBSE 12th)",
-      institution: "Vidyasthali Public School",
+      degree: "Higher Secondary Education (12th Grade)",
+      institution: "Vidyasthali Public School (CBSE)",
       date: "Completed",
-      grade: "72%",
-      description: "Completed my higher secondary education, establishing a robust academic foundation and developing strong analytical and problem-solving abilities."
+      description: "Built a strong foundation in Mathematics and Sciences, fostering analytical and logical problem-solving abilities.",
+      icon: <Award size={24} />
+    },
+    {
+      degree: "Secondary Education (10th Grade)",
+      institution: "Vidyasthali Public School (CBSE)",
+      date: "Completed",
+      description: "Developed core academic competencies with a focus on fundamental sciences and mathematics.",
+      icon: <Award size={24} />
     }
   ];
 
@@ -30,43 +37,49 @@ export function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">My <span className="text-gradient">Education</span></h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4"><span className="text-gradient">Education</span></h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {education.map((edu, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="glass-card p-8 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className={`glass-card p-8 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden group ${index === 0 ? 'lg:col-span-3 lg:flex-row lg:items-center lg:gap-10 border-primary-500/30' : ''}`}
             >
-              <div className="flex items-center gap-4 mb-6 relative">
-                <div className="w-14 h-14 rounded-full glass flex items-center justify-center text-primary-500">
-                  <GraduationCap size={28} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold">{edu.degree}</h3>
-                  <p className="text-secondary-500 font-medium">{edu.institution}</p>
-                </div>
-              </div>
-              
-              <div className="mb-4 flex flex-wrap gap-4 text-sm text-gray-400">
-                <div className="flex items-center gap-1 bg-white/5 py-1 px-3 rounded-full">
-                  <Calendar size={14} />
-                  <span>{edu.date}</span>
-                </div>
-                <div className="bg-white/5 py-1 px-3 rounded-full font-semibold text-accent-500">
-                  {edu.grade}
+              {/* Subtle background glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
+
+              <div className={`flex ${index === 0 ? 'lg:flex-col lg:justify-center' : ''} items-start gap-4 mb-6 relative z-10 shrink-0`}>
+                <div className={`w-14 h-14 rounded-full glass flex items-center justify-center text-primary-500 shadow-[0_0_15px_rgba(138,43,226,0.2)] group-hover:shadow-[0_0_25px_rgba(138,43,226,0.5)] transition-shadow`}>
+                  {edu.icon}
                 </div>
               </div>
               
-              <p className="text-gray-300 flex-grow">
-                {edu.description}
-              </p>
+              <div className="relative z-10 flex-grow">
+                <h3 className="text-xl font-bold text-white mb-2 leading-tight">{edu.degree}</h3>
+                <p className="text-secondary-500 font-medium mb-4 text-lg">{edu.institution}</p>
+                
+                <div className="mb-4 flex flex-wrap gap-3 text-sm text-gray-400">
+                  <div className="flex items-center gap-1.5 bg-white/5 py-1 px-3 rounded-full border border-white/5">
+                    <Calendar size={14} />
+                    <span>{edu.date}</span>
+                  </div>
+                  {edu.grade && (
+                    <div className="bg-white/5 py-1 px-3 rounded-full font-semibold text-accent-500 border border-accent-500/20">
+                      {edu.grade}
+                    </div>
+                  )}
+                </div>
+                
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  {edu.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

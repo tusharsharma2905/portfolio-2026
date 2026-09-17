@@ -4,8 +4,8 @@ import { Footer } from "@/components/Footer";
 import { CosmicBackground } from "@/components/CosmicBackground";
 
 export const metadata = {
-  title: "Tushar Sharma | Portfolio",
-  description: "Personal portfolio of Tushar Sharma, 3rd year B.Tech CSE student.",
+  title: "Tushar Sharma | AI/ML Developer & Computer Science Engineer",
+  description: "Portfolio of Tushar Sharma, AI/ML Developer, Full-Stack Engineer, and Computer Science student building intelligent web and cloud solutions.",
 };
 
 export default function RootLayout({ children }) {
